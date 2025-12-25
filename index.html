@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darshan Prajapati | Senior Full Stack Developer</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --bg: #050505;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --glass: blur(15px);
+            --nav-bg: rgba(5, 5, 5, 0.8);
+            --hero-grad: linear-gradient(90deg, #00f2fe, #4facfe);
+        }
+
+        [data-theme="light"] {
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --text-main: #0f172a;
+            --text-dim: #475569;
+            --nav-bg: rgba(248, 250, 252, 0.9);
+            --primary: #0284c7;
+            --secondary: #0ea5e9;
+            --hero-grad: linear-gradient(90deg, #0284c7, #0ea5e9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            transition: 0.4s;
+            overflow-x: hidden;
+        }
+
+        section {
+            padding: 80px 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--nav-bg);
+            backdrop-filter: var(--glass);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk';
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk';
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: var(--hero-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 16px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-wrapper {
+            min-height: 72px;
+            margin-bottom: 15px;
+        }
+
+        .select-technology-wrapper {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            margin: 4px;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 24px;
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .project-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 15px;
+        }
+
+        .project-card a:hover {
+            color: #ffffff;
+        }
+
+        .experience-item {
+            margin-bottom: 30px;
+            border-left: 2px solid var(--primary);
+            padding-left: 20px;
+        }
+
+        .experience-item .roles-company-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .experience-item h4 {
+            font-size: 16px;
+        }
+
+        .cert-item {
+            margin-bottom: 15px;
+            border-left: 2px solid var(--secondary);
+            padding-left: 15px;
+        }
+
+        .about-us-content-wrapper {
+             display: grid;
+            gap: 30px;
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 8px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary);
+        }
+
+        .footer {
+            position: relative;
+            background: linear-gradient(180deg, transparent, var(--card-bg));
+            border-top: 1px solid var(--border);
+            padding: 120px 8% 70px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Soft glow background */
+        .footer::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center,
+                    rgba(0, 242, 254, 0.08),
+                    transparent 60%);
+            pointer-events: none;
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-title {
+            font-family: 'Space Grotesk';
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            margin-bottom: 1rem;
+        }
+
+        .footer-subtitle {
+            color: var(--text-dim);
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-email {
+            display: inline-block;
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--primary);
+            position: relative;
+        }
+
+        /* Animated underline */
+        .footer-email::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 2px;
+            background: var(--hero-grad);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .footer-email:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Social Icons */
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin: 35px 0;
+        }
+
+        .footer-socials a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            transition: 0.3s;
+        }
+
+        .footer-socials a:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        /* Divider */
+        .footer-divider {
+            margin: 40px auto 25px;
+            width: 120px;
+            height: 2px;
+            background: var(--hero-grad);
+            border-radius: 10px;
+        }
+
+        /* Bottom text */
+        .footer-bottom {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            flex-wrap: wrap;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: absolute;
+            right: 40px;
+            bottom: 40px;
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .back-to-top:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        /* Project Slider Fixes */
+        .project-slider {
+            margin-top: 20px;
+        }
+
+        .project-slider .project-card {
+            margin: 10px 24px 0 0;
+            height: auto;
+        }
+
+        .project-card p {
+            margin-bottom: 10px;
+        }
+
+        .slick-track {
+            display: flex !important;
+        }
+
+        .slick-slide {
+            height: inherit !important;
+        }
+
+        /* Hide default arrows */
+        .slick-prev,
+        .slick-next {
+            display: none !important;
+        }
+
+        /* Dots Styling */
+        .slick-dots {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .slick-dots li button:before {
+            font-size: 10px;
+            color: var(--text-dim);
+            opacity: 0.5;
+        }
+
+        .slick-dots li.slick-active button:before {
+            color: var(--primary);
+            opacity: 1;
+        }
+
+        /* Responsive css */
+        @media (min-width:992px) {
+            .about-us-content-wrapper {
+               
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 567px) {
+            .experience-item .roles-company-wrapper {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .back-to-top {
+                right: 20px;
+                bottom: 20px;
+            }
+
+            .footer {
+                padding: 70px 8% 70px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .menu-toggle {
+                display: block;
+                z-index: 1001;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: #000;
+                backdrop-filter: var(--glass);
+                height: 100vh;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">DARSHAN<span>.</span>PRAJAPATI</div>
+
+        <div class="nav-container">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+		<li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>                
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle"><i data-lucide="moon"></i></button>
+            <button class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div>
+            <div
+                style="background: rgba(0, 242, 254, 0.1); color: var(--primary); padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 1rem; font-weight: 600;">
+                8+ Years of Excellence</div>
+            <h1>Full Stack <span>Architect</span><br>Modern Solutions.</h1>
+
+            <div style="display: flex; gap: 15px; justify-content: flex-start;">
+                <a href="#projects"
+                    style="background: var(--primary); color: #000; padding: 15px 35px; border-radius: 12px; text-decoration: none; font-weight: 700;">View
+                    Projects</a>
+                <a href="mailto:dev.darshanp18@gmail.com"
+                    style="border: 1px solid var(--border); color: var(--text-main); padding: 15px 35px; border-radius: 12px; text-decoration: none; font-weight: 600;">Get
+                    In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background: var(--card-bg); border-top: 1px solid var(--border);">
+        <h2 style="font-family: 'Space Grotesk'; font-size: 2.5rem; margin-bottom: 3rem;">About Me</h2>
+        <div class="about-us-content-wrapper">
+            <div>
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Expertise</h3>
+                <p style="color: var(--text-dim); line-height: 1.8;">
+                    Senior Full Stack Developer with 8+ years of experience designing, developing, and maintaining
+                    scalable web applications and SaaS platforms. I possess comprehensive technical expertise spanning
+                    Angular (v8+ to v19+), React, Next.js, .NET Core, and Node.js, with a deep focus on building secure
+                    RESTful APIs and managing cloud-based deployments. I have a proven ability to lead development teams
+                    , translate complex business requirements into high-performance technical solutions, and deliver
+                    quality products within Agile (Scrum/Kanban) environments. My background includes successfully
+                    modernizing legacy systems and architecting modern, responsive frontends using TypeScript, Tailwind
+                    CSS, and Material UI.
+                </p>
+
+            </div>
+            <div>
+                <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Certifications</h3>
+                <div class="cert-item">
+                    <h4 style="font-size: 1rem;">IBM Certified Database
+                        Associate DB2 9 Fundamentals
+                    </h4>
+                    <p style="font-size: 0.85rem; color: var(--text-dim);">- August 2010
+                    </p>
+                </div>
+                <div class="cert-item">
+                    <h4 style="font-size: 1rem;">IBM Certified Deployment
+                        Professional Tivoli Directory
+                        Server V6.1 IBM</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-dim);">September
+                        2010</p>
+                </div>
+                <div class="cert-item">
+                    <h4 style="font-size: 1rem;">Core Java Training Certificate</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-dim);">GIL [Gujarat Informatics
+                        Limited], TCS Competency Test
+                        Level E1</p>
+                </div>
+                <div class="cert-item">
+                    <h4 style="font-size: 1rem;">Research Publication:</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-dim);">Comparative Study Of Web
+                        Search Engines And User-
+                        Centric Search Engine National
+                        Journal Of System And
+                        Information Technology,
+                        December 2011</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 style="font-family: 'Space Grotesk'; font-size: 2.5rem; margin-bottom: 1rem;">Unified Tech Stack</h2>
+        <p style="color: var(--text-dim); margin-bottom: 2rem;">A comprehensive blend of Enterprise and Modern Web
+            technologies.</p>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h4 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i
+                        data-lucide="layout"></i> Frontend</h4>
+                <div class="skill-tag">Html</div>
+                <div class="skill-tag">Css</div>
+                <div class="skill-tag">Scss</div>
+                <div class="skill-tag">Tailwind Css</div>
+                <div class="skill-tag">Javascript</div>
+                <div class="skill-tag">JQuery</div>
+                <div class="skill-tag">Redux</div>
+                <div class="skill-tag">Responsive Web Design (RWD)</div>
+                <div class="skill-tag">Angular</div>
+                <div class="skill-tag">React</div>
+                <div class="skill-tag">Next.js</div>
+                <div class="skill-tag">TypeScript</div>
+                <div class="skill-tag">Tailwind CSS</div>
+                <div class="skill-tag">Material UI</div>
+                <div class="skill-tag">Highcharts.js</div>
+                <div class="skill-tag">Bootstrap</div>
+            </div>
+            <div class="skill-card">
+                <h4 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i
+                        data-lucide="server"></i> Backend</h4>
+                <div class="skill-tag">.NET Core</div>
+                <div class="skill-tag">.NET Framework</div>
+                <div class="skill-tag">C#</div>
+                <div class="skill-tag">ASP.NET Core</div>
+                <div class="skill-tag">RESTful API Development</div>
+                <div class="skill-tag">WebAPI 2.0</div>
+                <div class="skill-tag">Node.js</div>
+                <div class="skill-tag">Express.js</div>
+
+            </div>
+            <div class="skill-card">
+                <h4 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i
+                        data-lucide="database"></i> Database Management</h4>
+                <div class="skill-tag">SQL Server</div>
+                <div class="skill-tag">MSSQL</div>
+                <div class="skill-tag">MongoDB</div>
+                <div class="skill-tag">Firebase</div>
+                <div class="skill-tag">Entity Framework</div>
+                <div class="skill-tag">C# Entity Framework 6.0</div>
+                <div class="skill-tag">Database Design and Query Optimization</div>
+                <div class="skill-tag">Azure DevOps</div>
+                <div class="skill-tag">AWS</div>
+                <div class="skill-tag">CI/CD</div>
+            </div>
+            <div class="skill-card">
+                <h4 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="git-branch"></i> Version Control & DevOps
+                </h4>
+                <div class="skill-tag">GIT</div>
+                <div class="skill-tag">BitBucket</div>
+                <div class="skill-tag">Azure DevOps</div>
+                <div class="skill-tag">CI/CD Pipelines</div>
+                <div class="skill-tag">AWS Services</div>
+                <div class="skill-tag">Azure Services</div>
+                <div class="skill-tag">DevOps</div>
+                <div class="skill-tag">Practices and Automation</div>
+            </div>
+            <div class="skill-card">
+                <h4 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="shield"></i>Security & Tech Stack
+                </h4>
+                <div class="skill-tag">Identity Server</div>
+                <div class="skill-tag">SSO (Single Sign-On)</div>
+                <div class="skill-tag">OAuth 2.0</div>
+                <div class="skill-tag">JWT Authentication</div>
+                <div class="skill-tag">Agile Development (Scrum, Kanban)</div>
+                <div class="skill-tag">WCF</div>
+                <div class="skill-tag">DevOps</div>
+                <div class="skill-tag">Practices and Automation</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 style="font-family: 'Space Grotesk'; font-size: 2.5rem; margin-bottom: 3rem;">Professional Journey</h2>
+        <div class="experience-item">
+            <div class="roles-company-wrapper">
+                <div style="display: flex; flex-direction: column;">
+                    <h3 style="color: var(--primary);">Freelancing</h2>
+                        <h4>Full Stack Developer</h4>
+                </div>
+
+                <span style="color: var(--primary);">Jan 2024 - Present</span>
+            </div>
+            <ul style="color: var(--text-dim); font-size: 1rem; line-height: 1.5rem; padding-left: 16px;">
+                <li>Providing full-stack development services to startups, agencies, and international clients.</li>
+                <li>Designing and developing custom web applications and SaaS solutions using Angular and .NET Core.
+                </li>
+                <li>Modernizing legacy applications by migrating React and Node systems to modern architectures.</li>
+                <li>Building secure REST APIs and integrating third-party services such as payment gateways, email
+                    services, and cloud storage.</li>
+                <li>Collaborating directly with founders and business owners to define product scope, timelines, and
+                    technical roadmaps.</li>
+            </ul>
+        </div>
+        <div class="experience-item">
+            <div class="roles-company-wrapper">
+                <div style="display: flex; flex-direction: column;">
+                    <h3 style="color: var(--primary);">Natrix Software Private Limited</h2>
+                        <h4>Senior Full Stack Developer</h4>
+                </div>
+                <span style="color: var(--primary);">Nov 2013 - Jan 2024</span>
+            </div>
+            <ul style="color: var(--text-dim); font-size: 1rem; line-height: 1.5rem; padding-left: 16px;">
+                <li>Led end-to-end development of large-scale web and SaaS applications
+                    using React and Node.</li>
+                <li>Owned full application lifecycle including requirement analysis,
+                    architecture design, development, deployment, and maintenance.
+                </li>
+                <li>Designed and developed secure, scalable RESTful APIs using Node
+                    Core and WebAPI, serving thousands of users.</li>
+                <li>Built high-performance, responsive frontends with React, Material UI,
+                    Bootstrap, and Tailwind CSS.</li>
+
+            </ul>
+        </div>
+        <div class="experience-item">
+            <div class="roles-company-wrapper">
+                <div style="display: flex; flex-direction: column;">
+                    <h3 style="color: var(--primary);">LaNet Software Solution Private Ltd</h2>
+                        <h4>Senior Developer</h4>
+                </div>
+                <span style="color: var(--primary);">Jan 2012 - Aug 2013</span>
+            </div>
+            <ul style="color: var(--text-dim); font-size: 1rem; line-height: 1.5rem; padding-left: 16px;">
+                <li>Developed and enhanced multiple enterprise and client-facing web
+                    applications.</li>
+                <li>Contributed to both frontend and backend development using
+                    ASP.NET MVC, WebAPI, and JavaScript frameworks.
+                </li>
+                <li>Worked closely with senior team members to implement new features
+                    and resolve complex technical issues.</li>
+                <li>Improved application stability, performance, and code quality through
+                    refactoring and best practices.</li>
+
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects" style="background: var(--card-bg);">
+        <h2 style="font-family: 'Space Grotesk'; font-size: 2.5rem; margin-bottom: 1rem;">Project Portfolio</h2>
+        <p style="color: var(--text-dim); margin-bottom: 3rem;">Highlighting diversity across different technology
+            stacks.</p>
+        <div class="project-grid project-slider">
+
+            <div class="project-card">
+
+                <h4 style="margin: 15px 0 10px;">Spotlightr</h4>
+                <div class="skill-wrapper">
+                    <div class="select-technology-wrapper">
+                        <div class="skill-tag">React.js</div>
+                        <div class="skill-tag">REST APIs</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">HTML5</div>
+                        <div class="skill-tag"> CSS3</div>
+                        <div class="skill-tag">Video Streaming APIs</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-dim); flex-grow: 1;">Spotlightr is a video hosting and
+                    streaming platform that allows users to upload, manage, and share
+                    videos with advanced analytics, playlists, and subscription management. The system enables content
+                    creators to track
+                    engagement and deliver videos seamlessly to their audience.</p>
+
+                <a href="https://spotlightr.com/" target="_blank">Visit
+                    Website →</a>
+            </div>
+            <div class="project-card">
+
+                <h4 style="margin: 15px 0 10px;">CRtX AI</h4>
+                <div class="skill-wrapper">
+                    <div class="select-technology-wrapper">
+                        <div class="skill-tag">React.js</div>
+                        <div class="skill-tag">Next.js</div>
+                        <div class="skill-tag">REST APIs</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">HTML5</div>
+                        <div class="skill-tag"> CSS3</div>
+
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-dim); flex-grow: 1;"> CRTX.AI ( Research Management
+                    Software (RMS) application) is an advanced AI platform designed
+                    to enhance efficiency and collaboration for research teams and academics. CRTX.AI primarily focuses
+                    on improving
+                    research funding success rates and elevating the quality of research outputs through AI-powered
+                    tools for various
+                    stages of research projects. There are four main types of users: Principal Investigators,
+                    Researchers, Data Scientists, and
+                    Administrative Staff.</p>
+
+                
+            </div>
+            <div class="project-card">
+
+                <h4 style="margin: 15px 0 10px;">Phramebooth</h4>
+                <div class="skill-wrapper">
+                    <div class="select-technology-wrapper">
+                        <div class="skill-tag">React.js</div>
+                        <div class="skill-tag">REST APIs</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">HTML5</div>
+                        <div class="skill-tag"> CSS3</div>
+                        <div class="skill-tag">Printing & Social Media Integration APIs</div>
+
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-dim); flex-grow: 1;"> Phramebooth is an open-air photo
+                    booth platform that combines modern design with cutting-
+                    edge technology. It allows guests to capture, share, and print photos during events, making it ideal
+                    for parties,
+                    weddings, and corporate functions.</p>
+ <a href=" https://phramebooth.com/" target="_blank">Visit
+                    Website →</a>
+                
+            </div>
+            <div class="project-card">
+
+                <h4 style="margin: 15px 0 10px;">iWriteMath</h4>
+                <div class="skill-wrapper">
+                    <div class="select-technology-wrapper">
+                        <div class="skill-tag">Angular 8</div>
+                        <div class="skill-tag">.NET Core Web API</div>
+                        <div class="skill-tag">MSSQL Server</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-dim); flex-grow: 1;">A SaaS-based application providing
+                    digital learning resources for students, allowing access at home
+                    or in classrooms. Features include interactive workbooks, secure payment processing via Stripe, and
+                    PDF viewing.</p>
+
+                <a href=" https://avponline.com" target="_blank">Visit
+                    Website →</a>
+            </div>
+            <div class="project-card">
+
+                <h4 style="margin: 15px 0 10px;">Melanated Healthcare</h4>
+                <div class="skill-wrapper">
+                    <div class="select-technology-wrapper">
+                        <div class="skill-tag">React.js</div>
+                        <div class="skill-tag">REST APIs</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">HTML5</div>
+                        <div class="skill-tag">CSS3</div>
+                        <div class="skill-tag">Authentication & Notification APIs</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-dim); flex-grow: 1;"> Melanated Healthcare is a digital
+                    healthcare platform that connects patients with providers,
+                    allowing easy appointment scheduling, secure communication, and efficient management of healthcare
+                    services. The
+                    system focuses on improving accessibility and convenience for users.</p>
+
+                <a href=" https://melanatedhealthcare.app/" target="_blank">Visit
+                    Website →</a>
+            </div>
+            <div class="project-card">
+
+                <h4 style="margin: 15px 0 10px;">Apex Fun</h4>
+                <div class="skill-wrapper">
+                    <div class="select-technology-wrapper">
+                        <div class="skill-tag"> Angular.js</div>
+                        <div class="skill-tag">ASP.NET MVC</div>
+                        <div class="skill-tag">WebAPI 2.0</div>
+                        <div class="skill-tag">Bootstrap</div>
+                        <div class="skill-tag">MongoDB</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-dim); flex-grow: 1;">Apex Fun is an event management
+                    platform that allows users to participate in events, track
+                    donations, and shop for items. The system supports event management, sponsor pledges, and donation
+                    reminders. It
+                    also stores archived data for reporting and performance tracking.</p>
+                <a href="https://myapexevent.com/" target="_blank">Visit
+                    Website →</a>
+            </div>
+            <div class="project-card">
+                <h4 style="margin: 15px 0 10px;">Tagdit</h4>
+
+                <div class="skill-wrapper">
+                    <div class="select-technology-wrapper">
+                        <div class="skill-tag">Angular 13</div>
+                        <div class="skill-tag">WebAPI 2</div>
+                        <div class="skill-tag">MongoDB</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-dim); flex-grow: 1;">Tagdit is a platform for liquid
+                    democracy, enabling members to delegate their votes to trusted
+                    individuals. It allows users to post questions, share information, and measure trust within a
+                    community. The platform
+                    provides advanced search and rating features to prioritize the most important information.</p>
+                <a href=" https://www.tagdit.com" target="_blank">Visit
+                    Website →</a>
+            </div>
+            <div class="project-card">
+
+                <h4 style="margin: 15px 0 10px;">PlayBook</h4>
+                <div class="skill-wrapper">
+                    <div class="select-technology-wrapper">
+                        <div class="skill-tag">Angular.js</div>
+                        <div class="skill-tag">.NET Core API</div>
+                        <div class="skill-tag">C# Entity Framework 6.0</div>
+                        <div class="skill-tag">Bootstrap</div>
+                        <div class="skill-tag">MongoDB</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-dim); flex-grow: 1;"> PlayBook is a football team
+                    management system that allows users to manage teams, players
+                    (with offensive, defensive, and special team types), installs, subscriptions, and reports. The
+                    system facilitates team
+                    collaboration, performance tracking, and efficient management of football teams.</p>
+               
+            </div>
+            <div class="project-card">
+                <h4 style="margin: 15px 0 10px;">Lutosa Electricity</h4>
+
+                <div class="skill-wrapper">
+                    <div class="select-technology-wrapper">
+                        <div class="skill-tag">Angular 13</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-dim); flex-grow: 1;">Lutosa Electricity is a report
+                    management system that facilitates driver information management
+                    and integrates QR code scanning for quick data entry. It allows users to generate and manage
+                    various reports related to electricity usage and service management.</p>
+                           </div>
+            <div class="project-card">
+                <h4 style="margin: 15px 0 10px;">Coinfluence</h4>
+
+                <div class="skill-wrapper">
+                    <div class="select-technology-wrapper">
+                        <div class="skill-tag">React.js</div>
+                        <div class="skill-tag">Node.j</div>
+                        <div class="skill-tag">REST API</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">HTML 5</div>
+                        <div class="skill-tag">CSS3</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-dim); flex-grow: 1;"> Coinfluence is a blockchain and
+                    cryptocurrency platform designed to support crypto market
+                    making and launchpad services for early-stage blockchain projects. It provides liquidity solutions,
+                    trading support, and
+                    mechanisms to help crypto projects gain exposure and efficient market execution.</p>
+                <a href="https://coinfluence.io/" target="_blank">Visit
+                    Website →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+
+            <h2 class="footer-title">Let’s Build Something Great</h2>
+            <p class="footer-subtitle">
+                Currently available for freelance opportunities and senior roles.
+            </p>
+
+            <a href="mailto:dev.darshanp18@gmail.com" class="footer-email">
+                dev.darshanp18@gmail.com
+            </a>
+
+            <!-- Social Links -->
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
+                    <i data-lucide="linkedin"></i>
+                </a>
+                <a href="https://github.com/DevDarshan18" target="_blank" aria-label="GitHub">
+                    <i data-lucide="github"></i>
+                </a>
+                <a href="mailto:dev.darshanp18@gmail.com" aria-label="Email">
+                    <i data-lucide="mail"></i>
+                </a>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <span>© 2025 Darshan Prajapati</span>
+
+            </div>
+
+
+
+        </div>
+        <!-- Back to top -->
+        <button class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+            <i data-lucide="arrow-up"></i>
+        </button>
+    </footer>
+
+
+    <script>
+        lucide.createIcons();
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const target = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', target);
+            themeToggle.innerHTML = `<i data-lucide="${target === 'light' ? 'sun' : 'moon'}"></i>`;
+            lucide.createIcons();
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.contains('active');
+            menuToggle.innerHTML = `<i data-lucide="${isOpen ? 'x' : 'menu'}"></i>`;
+            lucide.createIcons();
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i data-lucide="menu"></i>';
+                lucide.createIcons();
+            });
+        });
+
+        $(document).ready(function () {
+            $('.project-slider').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: false,
+                dots: true,
+                arrows: false,
+                autoplay: false,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 568,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+
+</html>
